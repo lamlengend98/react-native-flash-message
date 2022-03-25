@@ -223,27 +223,29 @@ export const DefaultFlash = React.forwardRef(
           >
             {hasIcon && icon.position === "left" && iconView}
 
-            {!!renderCustomContent ? renderCustomContent(message) :
               <View style={styles.flashLabel}>
-                <Text
-                  style={[
-                    styles.flashText,
-                    hasDescription && styles.flashTitle,
-                    !!message.color && { color: message.color },
-                    titleStyle,
-                  ]}
-                  {...textProps}
-                  {...titleProps}
-                >
-                  {message.message}
-                </Text>
-                {hasDescription && (
-                  <Text style={[styles.flashText, !!message.color && { color: message.color }, textStyle]} {...textProps}>
-                    {message.description}
-                  </Text>
-                )}
+            {!!renderCustomContent ? renderCustomContent(message) :
+            <>
+            <Text
+              style={[
+                styles.flashText,
+                hasDescription && styles.flashTitle,
+                !!message.color && { color: message.color },
+                titleStyle,
+              ]}
+              {...textProps}
+              {...titleProps}
+            >
+              {message.message}
+            </Text>
+            {hasDescription && (
+              <Text style={[styles.flashText, !!message.color && { color: message.color }, textStyle]} {...textProps}>
+                {message.description}
+              </Text>
+            )}
+            </>
+              }
               </View>
-            }
             {hasIcon && icon.position === "right" && iconView}
           </View>
         )}
